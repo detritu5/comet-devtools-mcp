@@ -3,11 +3,9 @@
  * Copyright 2025 Google LLC
  * SPDX-License-Identifier: Apache-2.0
  */
-
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-
 import type {
   Browser,
   ChromeReleaseChannel,
@@ -15,16 +13,13 @@ import type {
   Target,
 } from 'puppeteer-core';
 import puppeteer from 'puppeteer-core';
-
 let browser: Browser | undefined;
-
 function makeTargetFilter(devtools: boolean) {
   const ignoredPrefixes = new Set([
     'chrome://',
     'chrome-extension://',
     'chrome-untrusted://',
   ]);
-
   if (!devtools) {
     ignoredPrefixes.add('devtools://');
   }
@@ -40,7 +35,6 @@ function makeTargetFilter(devtools: boolean) {
     return true;
   };
 }
-
 export async function ensureBrowserConnected(options: {
   browserURL: string;
   devtools: boolean;
@@ -56,7 +50,6 @@ export async function ensureBrowserConnected(options: {
   });
   return browser;
 }
-
 interface McpLaunchOptions {
   acceptInsecureCerts?: boolean;
   executablePath?: string;
@@ -72,27 +65,24 @@ interface McpLaunchOptions {
   args?: string[];
   devtools: boolean;
 }
-
 export async function launch(options: McpLaunchOptions): Promise<Browser> {
   const {channel, executablePath, headless, isolated} = options;
   const profileDirName =
     channel && channel !== 'stable'
-      ? `chrome-profile-${channel}`
-      : 'chrome-profile';
-
+      ? `comet-profile-${channel}`
+      : 'comet-profile';
   let userDataDir = options.userDataDir;
   if (!isolated && !userDataDir) {
     userDataDir = path.join(
       os.homedir(),
       '.cache',
-      'chrome-devtools-mcp',
+      'comet-devtools-mcp',
       profileDirName,
     );
     await fs.promises.mkdir(userDataDir, {
       recursive: true,
     });
   }
-
   const args: LaunchOptions['args'] = [
     ...(options.args ?? []),
     '--hide-crash-restore-bubble',
@@ -110,7 +100,6 @@ export async function launch(options: McpLaunchOptions): Promise<Browser> {
         ? (`chrome-${channel}` as ChromeReleaseChannel)
         : 'chrome';
   }
-
   try {
     const browser = await puppeteer.launch({
       channel: puppeteerChannel,
@@ -154,7 +143,6 @@ export async function launch(options: McpLaunchOptions): Promise<Browser> {
     throw error;
   }
 }
-
 export async function ensureBrowserLaunched(
   options: McpLaunchOptions,
 ): Promise<Browser> {
@@ -164,5 +152,4 @@ export async function ensureBrowserLaunched(
   browser = await launch(options);
   return browser;
 }
-
 export type Channel = 'stable' | 'canary' | 'beta' | 'dev';
