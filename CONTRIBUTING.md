@@ -42,8 +42,8 @@ for PR and commit titles.
 Check that you are using node version specified in .nvmrc, then run following commands:
 
 ```sh
-git clone https://github.com/ChromeDevTools/chrome-devtools-mcp.git
-cd chrome-devtools-mcp
+git clone https://github.com/detritu5/comet-devtools-mcp.git
+cd comet-devtools-mcp
 npm ci
 npm run build
 ```
@@ -61,7 +61,7 @@ Add the MCP server to your client's config.
 ```json
 {
   "mcpServers": {
-    "chrome-devtools": {
+    "comet-devtools": {
       "command": "node",
       "args": ["/path-to/build/src/index.js"]
     }
@@ -72,6 +72,7 @@ Add the MCP server to your client's config.
 #### Using with VS Code SSH
 
 When running the `@modelcontextprotocol/inspector` it spawns 2 services - one on port `6274` and one on `6277`.
+
 Usually VS Code automatically detects and forwards `6274` but fails to detect `6277` so you need to manually forward it.
 
 ### Debugging
