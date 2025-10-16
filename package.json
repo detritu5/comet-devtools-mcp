@@ -1,7 +1,7 @@
 {
-  "name": "chrome-devtools-mcp",
+  "name": "comet-devtools-mcp",
   "version": "0.8.1",
-  "description": "MCP server for Chrome DevTools",
+  "description": "MCP server for Comet Browser (Chromium-based) DevTools",
   "type": "module",
   "bin": "./build/src/index.js",
   "main": "index.js",
@@ -28,14 +28,15 @@
     "LICENSE",
     "!*.tsbuildinfo"
   ],
-  "repository": "ChromeDevTools/chrome-devtools-mcp",
-  "author": "Google LLC",
+  "repository": "detritu5/comet-devtools-mcp",
+  "author": "Comet Browser Contributors",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp/issues"
+    "url": "https://github.com/detritu5/comet-devtools-mcp/issues"
   },
-  "homepage": "https://github.com/ChromeDevTools/chrome-devtools-mcp#readme",
-  "mcpName": "io.github.ChromeDevTools/chrome-devtools-mcp",
+  "homepage": "https://github.com/detritu5/comet-devtools-mcp#readme",
+  "keywords": ["comet", "comet-browser", "chromium", "devtools", "mcp", "browser-automation"],
+  "mcpName": "io.github.detritu5/comet-devtools-mcp",
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.20.0",
     "core-js": "3.46.0",
