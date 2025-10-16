@@ -1,9 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
-  "name": "io.github.ChromeDevTools/chrome-devtools-mcp",
-  "description": "MCP server for Chrome DevTools",
+  "name": "io.github.detritu5/comet-devtools-mcp",
+  "description": "MCP server for Comet Browser (Chromium-based) DevTools",
   "repository": {
-    "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+    "url": "https://github.com/detritu5/comet-devtools-mcp",
     "source": "github"
   },
   "version": "0.8.1",
@@ -11,7 +11,7 @@
     {
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
-      "identifier": "chrome-devtools-mcp",
+      "identifier": "comet-devtools-mcp",
       "version": "0.8.1",
       "transport": {
         "type": "stdio"
